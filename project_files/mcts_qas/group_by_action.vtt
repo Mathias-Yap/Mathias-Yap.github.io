@@ -1,0 +1,4 @@
+WEBVTT
+
+00:00:00.000 --> 99:59:59.999
+Group by Action: adds a group node and lets MCTS decide between adding, swapping, deleting, or changing the parameters of a gate before choosing a specific action.

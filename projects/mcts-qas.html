@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MCTS for Quantum Ansatz Search &middot; Mathias Yap</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-name" href="../index.html">Mathias Yap</a>
+      <div class="nav-links">
+        <a href="../index.html">About</a>
+        <a href="../experience.html">Experience</a>
+        <a href="../projects.html" class="active">Projects</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <a href="../projects.html" class="back-link">&larr; Projects</a>
+
+    <div class="project-banner" style="background: #000;">
+      <img src="../project_files/mcts_qas/thumbnail.png" alt="MCTS for Quantum Ansatz Search">
+    </div>
+
+    <div class="project-header">
+      <p class="card-context">MSc Research Project &middot; Search &amp; Optimization &middot; Quantum AI</p>
+      <h1>MCTS for Quantum Ansatz Search</h1>
+    </div>
+
+    <div class="project-section">
+      <p class="project-section-label">Background</p>
+      <p>Variational Quantum Algorithms use parameterized quantum circuits to solve optimization problems, but their
+        performance depends heavily on the chosen circuit structure, or ansatz. Designing an effective ansatz is
+        difficult because the search space of possible quantum circuits is extremely large and often requires domain
+        expertise. This project investigated Quantum Architecture Search, where the goal is to automatically discover
+        effective circuit designs for a given quantum optimization problem. Specifically, we explored how Monte Carlo
+        Tree Search could be adapted to search through quantum circuit designs more efficiently.</span></p>
+    </div>
+
+    <div class="project-section">
+      <p class="project-section-label">Contribution</p>
+      <p>My contribution focused on evaluating and extending Monte Carlo Tree Search variants for Quantum Architecture
+        Search. The project tested several modifications to the baseline MCTS approach, including terminal nodes,
+        grouping circuits by gate type, grouping by high-level actions, combining multiple grouping strategies, and
+        applying progressive widening to control the branching factor. These variants were evaluated across quantum
+        chemistry tasks, such as estimating the ground-state energy of H₂, H₂O, and LiH, as well as variational quantum
+        linear solver problems. The work involved comparing variants not only by reward, but also by circuit complexity,
+        especially the number of parameterized rotation gates and CNOT gates.</span></p>
+      <div class="anim-feature">
+        <div class="anim-placeholder">
+          <img src="../project_files/mcts_qas/mcts_qas_adaptation.png"
+            alt="How MCTS is adapted for quantum ansatz search">
+        </div>
+        <p class="anim-caption">How MCTS is adapted for quantum ansatz search</p>
+      </div>
+    </div>
+
+    <div class="project-section">
+      <p class="project-section-label">Grouping Strategies</p>
+      Grouping strategies were introduced to make Monte Carlo Tree Search more effective in the large and highly
+      branching search space of quantum circuit design. Instead of treating every possible circuit modification as an
+      independent choice, the search can first reason over broader categories of actions. Grouping by gates lets MCTS
+      prioritize promising gate types before selecting their exact placement or parameters. Grouping by action separates
+      additions, deletions, swaps, and parameter changes, allowing the search to decide what kind of circuit
+      modification is most useful at a given point. Terminal nodes limit unnecessary expansion once a circuit is already
+      promising, while progressive widening controls how quickly new child nodes are introduced as the tree grows.
+      Combining these strategies creates a more structured search process that can balance exploration, efficiency, and
+      circuit simplicity.
+      <div class="anim-grid">
+        <div class="anim-card">
+          <p class="anim-card-label">Group by Gates</p>
+          <div class="anim-placeholder">
+            <video autoplay loop muted playsinline>
+              <source src="../project_files/mcts_qas/GatesScene.mp4" type="video/mp4">
+              <track kind="descriptions" src="../project_files/mcts_qas/GatesScene.vtt" default>
+            </video>
+          </div>
+          <p class="anim-caption">Adds a group node for each type of gate, as well as a deletion gate.</p>
+        </div>
+        <div class="anim-card">
+          <p class="anim-card-label">Group by Action</p>
+          <div class="anim-placeholder">
+            <video autoplay loop muted playsinline>
+              <source src="../project_files/mcts_qas/group_by_action.mp4" type="video/mp4">
+              <track kind="descriptions" src="../project_files/mcts_qas/group_by_action.vtt" default>
+            </video>
+          </div>
+          <p class="anim-caption">Adds a group node and lets MCTS decide between adding, swapping, deleting, or changing
+            the parameters of a gate before choosing a specific action.</p>
+        </div>
+        <div class="anim-card">
+          <p class="anim-card-label">Terminal Nodes</p>
+          <div class="anim-placeholder">
+            <video autoplay loop muted playsinline>
+              <source src="../project_files/mcts_qas/TerminalScene.mp4" type="video/mp4">
+              <track kind="descriptions" src="../project_files/mcts_qas/TerminalScene.vtt" default>
+            </video>
+          </div>
+          <p class="anim-caption">Unexpandable nodes that limit the depth of already good circuits in the MCTS tree.</p>
+        </div>
+        <div class="anim-card">
+          <p class="anim-card-label">Progressive Widening</p>
+          <div class="anim-placeholder">
+            <video autoplay loop muted playsinline>
+              <source src="../project_files/mcts_qas/PW_Scene.mp4" type="video/mp4">
+              <track kind="descriptions" src="../project_files/mcts_qas/PW_Scene.vtt" default>
+            </video>
+          </div>
+          <p class="anim-caption">Applied to group by gates, helps handle the tree growing quickly.</p>
+        </div>
+        <div class="anim-card">
+          <p class="anim-card-label">All Groupings</p>
+          <div class="anim-placeholder">
+            <video autoplay loop muted playsinline>
+              <source src="../project_files/mcts_qas/AllGroupings.mp4" type="video/mp4">
+              <track kind="descriptions" src="../project_files/mcts_qas/AllGroupings.vtt" default>
+            </video>
+          </div>
+          <p class="anim-caption">Adding multiple group nodes together.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-section">
+      <p class="project-section-label">Results &amp; Findings</p>
+      The results showed that no single MCTS variant was best across every Quantum Architecture
+      Search problem. However, specific variants improved over the baseline for particular problem types. Progressive
+      widening was especially effective for the ground-state energy estimation problems, while grouping by gates
+      performed more strongly on the variational quantum linear solver tasks. The most promising overall combination
+      was grouping by actions with terminal nodes and progressive widening, which outperformed the baseline on four of
+      the five tested problems. The project also found that several grouping-based variants produced smaller circuits
+      with fewer rotation and CNOT gates, making the resulting circuits easier to optimize and potentially less noisy
+      on real quantum hardware.
+    </div>
+
+    <div class="project-retrospective">
+      <p class="project-section-label">Retrospective</p>
+      Revisiting this project now, I see it as a useful introduction to experimental algorithm
+      design, quantum circuit optimization, and the challenges of applying a general search method to a highly
+      specialized domain. At the time, the focus was mainly on implementing and evaluating MCTS variants, but with
+      more distance from the project, I find myself thinking more about the assumptions behind the search itself.
+
+      One question I have now is whether representing each node as a concrete quantum circuit is the best fit for
+      MCTS. A different representation, such as ZX-calculus, might structure the search space in a way that makes
+      certain transformations or simplifications easier to discover. This connects to a broader challenge in Quantum
+      Architecture Search: unlike finite games such as chess or Go, there is no clear terminal state. Any circuit can
+      be evaluated as a possible stopping point, but the search can also continue adding gates indefinitely, while
+      parameterized gates make the action space effectively infinite, which breaks the assumptions of the MCTS
+      algorithm.
+
+      If I were to do this project again, I think a promising direction would be to make the search more aware of
+      quantum circuit
+      structure. Rather than adding or changing gates one at a time, the search could explore common gate pairs,
+      reusable circuit motifs, or ways to prune gates and parameters that do not meaningfully affect the circuit
+      output.
+    </div>
+
+    <div class="project-links">
+      <a href="../project_files/mcts_qas/report.pdf" class="btn btn-dark">Report</a>
+      <a href="https://github.com/andresLebbos/mcts-qa" class="btn">GitHub</a>
+    </div>
+  </main>
+
+  <footer>
+    <p>Mathias Yap &middot; 2026</p>
+  </footer>
+</body>
+
+</html>

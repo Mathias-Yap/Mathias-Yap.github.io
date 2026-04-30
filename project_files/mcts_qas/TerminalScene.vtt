@@ -1,0 +1,4 @@
+WEBVTT
+
+00:00:00.000 --> 99:59:59.999
+Terminal Nodes: unexpandable nodes that limit the depth of already good circuits in the MCTS tree, preventing over-exploration of high-quality solutions.

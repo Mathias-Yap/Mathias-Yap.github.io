@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formalization of Fast Polynomial Multiplication &middot; Mathias Yap</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-name" href="../index.html">Mathias Yap</a>
+      <div class="nav-links">
+        <a href="../index.html">About</a>
+        <a href="../experience.html">Experience</a>
+        <a href="../projects.html" class="active">Projects</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <a href="../projects.html" class="back-link">&larr; Projects</a>
+
+    <div class="project-banner" style="background: #fff;">
+      <img src="../project_files/rocq_formalization/pmul_algorithm.png" alt="Fast polynomial multiplication algorithm">
+    </div>
+
+    <div class="project-header">
+      <p class="card-context">BSc Thesis &middot; Formal &amp; Reliable AI</p>
+      <h1>Formalization of Fast Polynomial Multiplication in Rocq</h1>
+    </div>
+
+    <div class="project-section">
+      <p class="project-section-label">Background</p>
+      <p>Formal verification uses mathematical proof techniques to verify that software and algorithms behave according
+        to their specifications. This is especially important in safety-critical domains such as cybersecurity,
+        healthcare, and transport, where subtle implementation errors can have serious consequences. This thesis focused
+        on formalizing fast polynomial multiplication in Rocq (formerly Coq), a proof assistant used to define programs,
+        specifications,
+        and machine-checked proofs. The work was motivated by the Verified Calculus library, which supports formal
+        verification for algorithms used in Ariadne. Since the library’s existing polynomial multiplication was
+        implemented naively, this project explored whether a faster FFT-based multiplication algorithm could be formally
+        specified and proven correct.</p>
+    </div>
+
+    <div class="project-section">
+      <p class="project-section-label">Contribution</p>
+      <p>My contribution was the formalization and verification of an FFT-based polynomial multiplication algorithm in
+        Rocq. I defined dense polynomial representations, implemented core polynomial operations, and
+        developed the
+        formal machinery needed to reason about complex polynomial evaluation, roots of unity, the Discrete Fourier
+        Transform, the Fast Fourier Transform, and their inverse transformations. A key part of the work was proving
+        that the FFT computes the same result as the DFT, proving equivalence between the inverse FFT and inverse DFT,
+        and showing that the final fast multiplication algorithm is equivalent to naive polynomial multiplication. The
+        original proof was completed for real-coefficient polynomials with one assumed property concerning sums over
+        complex roots of unity. After completion of my thesis, I proved this assumption correct too. The work was then
+        adapted into the Ariadne library for floating-point arithmetic with rigorous error bounds, making it usable in
+        model-checking workflows that require both efficiency and formal reliability.</p>
+    </div>
+    <div class="project-section">
+      <p class="project-section-label">Formalization in Rocq</p>
+      <p>Working in Rocq means turning mathematical ideas into definitions, specifications, and machine-checked proofs.
+        For this project, I first had to formalize what a polynomial is, what it means to evaluate one, and how a
+        polynomial can be decomposed into its even and odd coefficients. These definitions then become the foundation
+        for
+        proving the correctness of the FFT-based multiplication algorithm.</p>
+
+      <div class="code-example-grid">
+        <div class="code-example">
+          <h3>Representing polynomials</h3>
+          <pre><code><span class="ck">Definition</span> <span class="cf">dense_poly</span> <span class="co">:=</span> <span class="ct">list</span> <span class="ct">C</span>.</code></pre>
+          <p class="image-caption">A dense complex polynomial is represented as a list of complex coefficients.</p>
+        </div>
+
+        <div class="code-example">
+          <h3>Evaluating a polynomial</h3>
+          <pre><code><span class="ck">Fixpoint</span> <span class="cf">complex_eval'</span>
+  (d : <span class="ct">nat</span>) (pd : <span class="ct">dense_poly</span>) (c : <span class="ct">C</span>) : <span class="ct">C</span> <span class="co">:=</span>
+  <span class="ck">match</span> pd <span class="ck">with</span>
+  <span class="co">|</span> <span class="cc">nil</span> <span class="co">=&gt;</span> <span class="cn">0</span>
+  <span class="co">|</span> cd <span class="co">::</span> pSd <span class="co">=&gt;</span>
+      cd <span class="co">*</span> (c <span class="co">^</span> d) <span class="co">+</span> complex_eval' (<span class="cc">S</span> d) pSd c
+  <span class="ck">end</span>.
+
+<span class="ck">Definition</span> <span class="cf">complex_eval</span> (p : <span class="ct">dense_poly</span>) (c : <span class="ct">C</span>) : <span class="ct">C</span> <span class="co">:=</span>
+  complex_eval' <span class="cn">0</span> p c.
+
+<span class="ck">Notation</span> <span class="cs">"p [ x ]"</span> <span class="co">:=</span> (complex_eval p x).</code></pre>
+          <p class="image-caption">Evaluation is defined recursively over the coefficient list, while notation makes
+            later statements closer to ordinary mathematical writing.</p>
+        </div>
+
+        <div class="code-example">
+          <h3>Proving FFT structure</h3>
+          <pre><code><span class="ck">Lemma</span> <span class="cf">even_and_odd</span> : <span class="ck">forall</span> p x,
+  \even_p [x <span class="co">^</span> <span class="cn">2</span>] <span class="co">+</span> x <span class="co">*</span> \odd_p [x <span class="co">^</span> <span class="cn">2</span>] <span class="co">=</span> p [x].</code></pre>
+          <p class="image-caption">This lemma proves that a polynomial can be reconstructed from its even and odd
+            coefficient parts, which is the key decomposition used by the FFT.</p>
+        </div>
+      </div>
+
+      <p>This example captures the kind of work involved in the formalization. Before proving the final multiplication
+        algorithm correct, I had to express basic mathematical concepts in Rocq and prove that each transformation
+        preserves the meaning of the polynomial. The final FFT proof depends on many such intermediate results, each
+        checked by the proof assistant.</p>
+    </div>
+    <div class="project-section">
+      <p class="project-section-label">Results &amp; Findings</p>
+      <p>The thesis showed that it is possible to implement and prove the correctness of a fast polynomial
+        multiplication
+        algorithm in Rocq. The formalized algorithm uses the FFT to move polynomials from coefficient
+        representation to
+        point-value representation, performs pointwise multiplication, and then applies the inverse FFT to return to
+        coefficient form. This reduces the intended algorithmic complexity from the quadratic complexity of naive
+        multiplication to <em>O</em>(<em>n</em> log <em>n</em>).</p>
+    </div>
+
+    <div class="project-retrospective">
+      <p class="project-section-label">Retrospective</p>
+      <p>This project taught me a lot about rigorous and formal mathematics, which is still one of the parts of computer
+        science I enjoy most. Working in Coq forced me to be precise about every definition, recursive structure, and
+        proof obligation. Even concepts that feel straightforward on paper, such as polynomial evaluation or the FFT
+        butterfly step, required careful formalization before they could be used reliably.
+
+        In hindsight, the final assumption that made it into the paper was easily provable: that the relevant roots of
+        unity sum to zero. At the time, I expected that proving this would require a more general proof of the geometric
+        series, which felt outside the scope of the project. Shortly after submission, I realized that for the case
+        needed in my formalization, a simpler argument was enough. Since the algorithm only required roots of unity of
+        size 2n, the roots could be paired with their opposites on the unit circle, and each pair sums to zero.
+
+        The original motivation was to adapt this proof into the Ariadne library, where polynomial multiplication is
+        used in model-checking workflows. That would require extending the result to floating-point arithmetic with
+        rigorous error bounds. While the FFT’s structure makes this relatively manageable, since it mainly consists of
+        additions and multiplications by known constants, the floating-point version still needs to track rounding
+        error, approximated roots of unity, and accumulated error through the transform.</p>
+    </div>
+
+    <div class="project-links">
+      <a href="../project_files/rocq_formalization/Bachelor_Thesis.pdf" class="btn btn-dark">Report</a>
+      <a href="https://github.com/Mathias-Yap/Fast-polynomial-multiplication-in-Coq" class="btn">GitHub</a>
+    </div>
+  </main>
+
+  <footer>
+    <p>Mathias Yap &middot; 2026</p>
+  </footer>
+</body>
+
+</html>

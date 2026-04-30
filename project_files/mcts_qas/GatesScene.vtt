@@ -1,0 +1,4 @@
+WEBVTT
+
+00:00:00.000 --> 99:59:59.999
+Group by Gates: adds a group node for each type of gate, as well as a deletion gate. MCTS selects a gate type before choosing the specific gate action.

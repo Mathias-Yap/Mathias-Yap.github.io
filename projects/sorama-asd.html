@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spatial Acoustic Information for Anomalous Sound Detection &middot; Mathias Yap</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-name" href="../index.html">Mathias Yap</a>
+      <div class="nav-links">
+        <a href="../index.html">About</a>
+        <a href="../experience.html">Experience</a>
+        <a href="../projects.html" class="active">Projects</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <a href="../projects.html" class="back-link">&larr; Projects</a>
+
+    <div class="project-header">
+      <p class="card-context">Sorama &middot; Audio Signal Processing &middot; Efficient AI</p>
+      <h1>Incorporating Spatial Acoustic Information for Anomalous Sound Detection</h1>
+    </div>
+
+    <div class="project-section">
+      <p class="project-section-label">Background</p>
+      <p>Acoustic anomaly detection is used in industrial monitoring to identify abnormal machine behavior from sound.
+        While modern acoustic monitoring systems often use microphone arrays, much of the existing research still
+        focuses on single-channel audio. This leaves the value of spatial information, such as time differences between
+        microphones or direction-related cues, relatively underexplored. This internship project investigated whether
+        spatial features from a 64-channel microphone array could improve anomaly detection in an industrial setting at
+        Sorama, where the existing approach relied on Isolation Forests and hand-engineered features.</p>
+    </div>
+
+    <div class="project-section">
+      <p class="project-section-label">Contribution</p>
+      <p>My contribution was the design and implementation of a modular acoustic anomaly detection framework inside
+        Sorama’s internal AI development platform, ADAM. The framework formalizes anomaly detection as two separable
+        components: a feature extractor and an anomaly scorer. This made it possible to train, evaluate, and compare
+        different representations and scoring methods in a consistent pipeline. I also implemented autoencoder-based
+        anomaly detection systems using mel spectrogram features, spatial GCC-PHAT features, and combined
+        spectral-spatial representations. The framework supports sequential training, validation-based score
+        normalization and thresholding, temporal windowing for variable-length audio, and deployment as a unified
+        TensorFlow Keras model.</p>
+    </div>
+
+    <div class="project-section">
+      <p class="project-section-label">Results &amp; Findings</p>
+      <p>The autoencoder-based systems outperformed Sorama’s existing Isolation Forest baseline on the evaluated
+        industrial dataset. The strongest result came from a mel spectrogram autoencoder with decoder reconstruction
+        error scoring, achieving a ROC–AUC of 0.826 compared with the Isolation Forest baseline of 0.735. GCC-PHAT
+        spatial features also performed competitively with decoder reconstruction error, reaching a ROC–AUC of 0.821,
+        but the combined mel and GCC-PHAT representation did not improve performance. This suggests that, under the
+        evaluated conditions, learned spectral features were the most reliable signal for anomaly detection, while the
+        spatial features provided limited additional benefit. The results also raised an important caveat: the
+        performance of GCC-PHAT may have been partly caused by unintended spectral sensitivity introduced by the feature
+        construction, rather than purely by spatial information.</p>
+    </div>
+
+    <div class="project-retrospective">
+      <p class="project-section-label">Retrospective</p>
+      <p class="placeholder">[Add: what surprised you during this work, what you would approach differently, and what
+        you would want a reader to take away.]</p>
+    </div>
+
+    <div class="project-links">
+      <a href="..\project_files\asd_sorama\technical_report_anomalous_sound_detection-2.pdf"
+        class="btn btn-dark">Report</a>
+      <span style="font-size: 0.78rem; color: var(--text-muted); align-self: center;">Code is proprietary</span>
+    </div>
+  </main>
+
+  <footer>
+    <p>Mathias Yap &middot; 2026</p>
+  </footer>
+</body>
+
+</html>

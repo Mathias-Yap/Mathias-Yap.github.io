@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projects &middot; Mathias Yap</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <nav>
     <div class="nav-inner">
@@ -21,131 +23,145 @@
   <main>
     <div class="page-header">
       <h1>Projects</h1>
-      <p class="subtitle">Selected coursework and thesis projects.</p>
+      <p class="subtitle">Research, internship, and coursework projects.</p>
     </div>
 
-    <div class="projects-grid">
+    <!-- ── Featured ── -->
+    <section>
+      <p class="section-label">Featured</p>
 
-      <div class="card">
-        <div class="card-img">[ image ]</div>
-        <div class="card-body">
-          <p class="card-context">MSc Thesis</p>
+      <a href="projects/mcts-qas.html" class="card-featured">
+        <div class="card-featured-img" style="background: #000;">
+          <img src="project_files/mcts_qas/thumbnail.png" alt="MCTS for Quantum Ansatz Search">
+        </div>
+        <div class="card-featured-body">
+          <p class="card-context">MSc Research Project &middot; Search &amp; Optimization &middot; Quantum AI</p>
           <h2 class="card-title">MCTS for Quantum Ansatz Search</h2>
-          <p class="card-desc">Investigated variants of Monte Carlo Tree Search for exploring quantum circuit (ansatz) configurations. Designed decision-grouping strategies to reduce branching complexity, improving search efficiency and solution quality in structured optimization settings.</p>
-          <div class="tags">
-            <span class="tag">MCTS</span>
-            <span class="tag">Quantum Computing</span>
-            <span class="tag">PennyLane</span>
-            <span class="tag">Optimization</span>
-          </div>
-          <div class="card-links">
-            <a href="#" class="btn btn-dark">Report</a>
-            <a href="#" class="btn">GitHub</a>
-          </div>
+          <p class="card-featured-desc">Variational quantum algorithms depend on selecting effective circuit structures
+            over an exponentially large search space. Investigated MCTS variants tailored to structured ans&auml;tz
+            search, designing decision-grouping strategies that reduce branching complexity and improve solution
+            quality.</p>
+          <span class="card-featured-action">View project &rarr;</span>
         </div>
-      </div>
+      </a>
 
-      <div class="card">
-        <div class="card-img">[ image ]</div>
-        <div class="card-body">
-          <p class="card-context">MSc Coursework</p>
-          <h2 class="card-title">Question Answering over Medical Knowledge Graphs</h2>
-          <p class="card-desc">Designed and implemented an LLM-driven pipeline for structured question answering over medical knowledge graphs. Developed a mapping from natural language queries to parameterized SPARQL query templates, with applications to clinical trial design.</p>
-          <div class="tags">
-            <span class="tag">LLM</span>
-            <span class="tag">Knowledge Graphs</span>
-            <span class="tag">SPARQL</span>
-            <span class="tag">NLP</span>
-          </div>
-          <div class="card-links">
-            <a href="#" class="btn btn-dark">Report</a>
-            <a href="#" class="btn">GitHub</a>
-          </div>
+      <a href="projects/rocq-fft.html" class="card-featured">
+        <div class="card-featured-img" style="background: #fff;">
+          <img src="project_files/rocq_formalization/pmul_algorithm.png" alt="Fast polynomial multiplication algorithm">
         </div>
-      </div>
-
-      <div class="card">
-        <div class="card-img">[ image ]</div>
-        <div class="card-body">
-          <p class="card-context">MSc Coursework</p>
-          <h2 class="card-title">Quartic Speedup Algorithm for Planted Inference</h2>
-          <p class="card-desc">Investigated the feasibility of a proposed quartic speedup algorithm for planted inference problems. Implemented simulations in PennyLane to evaluate scaling behavior across varying problem sizes and sparsity regimes, analyzing practical limitations in extending to full key recovery.</p>
-          <div class="tags">
-            <span class="tag">Quantum Computing</span>
-            <span class="tag">PennyLane</span>
-            <span class="tag">Algorithm Analysis</span>
-            <span class="tag">Complexity Theory</span>
-          </div>
-          <div class="card-links">
-            <a href="#" class="btn btn-dark">Report</a>
-            <a href="#" class="btn">GitHub</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-img">[ image ]</div>
-        <div class="card-body">
-          <p class="card-context">MSc Coursework</p>
-          <h2 class="card-title">Game AI Agent (Fianco)</h2>
-          <p class="card-desc">Developed a competitive game-playing agent using NegaMax search with alpha-beta pruning, transposition tables, and bitboard representations. Incorporated quiescence search and optimized the evaluation function using a genetic algorithm.</p>
-          <div class="tags">
-            <span class="tag">Game AI</span>
-            <span class="tag">NegaMax</span>
-            <span class="tag">Alpha-Beta Pruning</span>
-            <span class="tag">Genetic Algorithm</span>
-          </div>
-          <div class="card-links">
-            <a href="#" class="btn btn-dark">Report</a>
-            <a href="#" class="btn">GitHub</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-img">[ image ]</div>
-        <div class="card-body">
-          <p class="card-context">MSc Coursework</p>
-          <h2 class="card-title">Multi-Agent Gas Leak Detection</h2>
-          <p class="card-desc">Simulated distributed robotic agents for gas leak detection in a Unity environment. Combined particle filtering, FastSLAM, evolutionary algorithms, and particle swarm optimization (PSO) for localization and coordinated exploration in constrained environments.</p>
-          <div class="tags">
-            <span class="tag">Multi-Agent</span>
-            <span class="tag">Particle Filter</span>
-            <span class="tag">FastSLAM</span>
-            <span class="tag">PSO</span>
-            <span class="tag">Unity</span>
-          </div>
-          <div class="card-links">
-            <a href="#" class="btn btn-dark">Report</a>
-            <a href="#" class="btn">GitHub</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-img">[ image ]</div>
-        <div class="card-body">
-          <p class="card-context">BSc Thesis</p>
+        <div class="card-featured-body">
+          <p class="card-context">BSc Thesis &middot; Formal &amp; Reliable AI</p>
           <h2 class="card-title">Formalization of Fast Polynomial Multiplication in Rocq</h2>
-          <p class="card-desc">Formalized and verified the correctness of FFT-based polynomial multiplication using the Rocq proof assistant. Contributed to the development of a formally verified floating-point bounded arithmetic library.</p>
-          <div class="tags">
-            <span class="tag">Formal Verification</span>
-            <span class="tag">Rocq (Coq)</span>
-            <span class="tag">FFT</span>
-            <span class="tag">Mathematics</span>
-          </div>
-          <div class="card-links">
-            <a href="#" class="btn btn-dark">Report</a>
-            <a href="#" class="btn">GitHub</a>
+          <p class="card-featured-desc">Machine-checked proofs of numerical algorithms provide correctness guarantees
+            beyond what testing alone can achieve. Formalized and verified FFT-based polynomial multiplication using the
+            Rocq proof assistant, and contributed to a formally verified floating-point bounded arithmetic library.</p>
+          <span class="card-featured-action">View project &rarr;</span>
+        </div>
+      </a>
+
+      <a href="projects/sorama-asd.html" class="card-featured">
+        <div class="card-featured-img">
+          <div class="card-featured-placeholder">[ image ]</div>
+        </div>
+        <div class="card-featured-body">
+          <p class="card-context">Sorama &middot; Audio Signal Processing &middot; Efficient AI</p>
+          <h2 class="card-title">Incorporating Spatial Acoustic Information for Anomalous Sound Detection</h2>
+          <p class="card-featured-desc">Standard anomalous sound detection models discard the spatial information
+            captured by microphone arrays. Developed a reproducible ASD benchmarking framework and investigated
+            self-supervised methods for extracting compact spatial features for edge-deployed detection systems.</p>
+          <span class="card-featured-action">View project &rarr;</span>
+        </div>
+      </a>
+    </section>
+
+    <!-- ── More Projects ── -->
+    <section>
+      <p class="section-label">More Projects</p>
+      <div class="projects-grid-compact">
+
+        <div class="card-compact">
+          <div class="card-compact-img">[ image ]</div>
+          <div class="card-compact-body">
+            <p class="card-context">MSc Coursework &middot; Neuro-Symbolic AI &middot; Knowledge Graphs</p>
+            <h3 class="card-title">Question Answering over Medical Knowledge Graphs</h3>
+            <p class="card-compact-desc">Designed an LLM-driven pipeline mapping free-text questions to parameterized
+              SPARQL query templates, enabling structured reasoning over clinical knowledge graphs. Applied to clinical
+              trial design, bridging natural language and formal graph query languages.</p>
+            <div class="card-links">
+              <a href="#" class="btn btn-dark">Report</a>
+              <a href="#" class="btn">GitHub</a>
+            </div>
           </div>
         </div>
-      </div>
 
-    </div>
+        <div class="card-compact">
+          <div class="card-compact-img">[ image ]</div>
+          <div class="card-compact-body">
+            <p class="card-context">MSc Coursework &middot; Quantum AI &middot; Reliable AI</p>
+            <h3 class="card-title">Quartic Speedup Algorithm for Planted Inference</h3>
+            <p class="card-compact-desc">Implemented PennyLane simulations to evaluate a proposed quartic quantum
+              speedup for planted inference across varying problem sizes and sparsity regimes. Identified practical
+              limitations in extending the speedup from planted signal detection to full key recovery.</p>
+            <div class="card-links">
+              <a href="#" class="btn btn-dark">Report</a>
+              <a href="#" class="btn">GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-compact">
+          <div class="card-compact-img">[ image ]</div>
+          <div class="card-compact-body">
+            <p class="card-context">Sorama &middot; Audio Signal Processing &middot; Efficient AI</p>
+            <span class="card-status">Ongoing</span>
+            <h3 class="card-title">Sound Event Localization and Detection</h3>
+            <p class="card-compact-desc">Developing efficient real-time SELD models that exploit acoustic maps as a
+              structured spatial representation for 3D sound source localization. Investigating neuromorphic computing
+              and sparse neural networks as pathways to edge deployment.</p>
+            <div class="card-links">
+              <span style="font-size: 0.78rem; color: var(--text-muted); font-style: italic;">Work in progress</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-compact">
+          <div class="card-compact-img">[ image ]</div>
+          <div class="card-compact-body">
+            <p class="card-context">MSc Coursework &middot; Multi-Agent Systems &middot; Planning</p>
+            <h3 class="card-title">Multi-Agent Gas Leak Detection</h3>
+            <p class="card-compact-desc">Combined particle filtering, FastSLAM, evolutionary algorithms, and PSO in a
+              Unity simulation for coordinated multi-agent gas source detection. Achieved improved coverage efficiency
+              through coordinated localization in constrained environments.</p>
+            <div class="card-links">
+              <a href="#" class="btn btn-dark">Report</a>
+              <a href="#" class="btn">GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-compact">
+          <div class="card-compact-img">[ image ]</div>
+          <div class="card-compact-body">
+            <p class="card-context">MSc Coursework &middot; Search &amp; Planning</p>
+            <h3 class="card-title">Game AI Agent (Fianco)</h3>
+            <p class="card-compact-desc">Built a NegaMax agent with alpha-beta pruning, transposition tables, bitboard
+              representations, and quiescence search for the board game Fianco. Applied a genetic algorithm to tune the
+              evaluation function for improved adversarial performance.</p>
+            <div class="card-links">
+              <a href="#" class="btn btn-dark">Report</a>
+              <a href="#" class="btn">GitHub</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
   </main>
 
   <footer>
     <p>Mathias Yap &middot; 2026</p>
   </footer>
 </body>
+
 </html>

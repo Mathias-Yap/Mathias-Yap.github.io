@@ -1,0 +1,4 @@
+WEBVTT
+
+00:00:00.000 --> 99:59:59.999
+Progressive Widening: applied to group by gates, gradually expands the number of available children to handle the tree growing quickly and avoid premature exhaustion of branches.
