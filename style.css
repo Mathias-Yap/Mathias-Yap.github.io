@@ -55,6 +55,18 @@ nav {
   font-weight: 600;
   font-size: 0.95rem;
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  flex-shrink: 0;
 }
 
 .nav-links {
@@ -85,6 +97,36 @@ main {
   max-width: var(--max-w);
   margin: 0 auto;
   padding: 56px 24px 80px;
+}
+
+/* === Profile Header (About page) === */
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 48px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--border);
+}
+
+.profile-photo {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.profile-header h1 {
+  font-size: 1.9rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+
+.profile-header .subtitle {
+  color: var(--text-muted);
+  font-size: 0.95rem;
 }
 
 /* === Page Header === */
